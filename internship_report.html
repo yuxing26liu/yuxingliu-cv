@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>RunBuggy Repo-Site Scoring Project</title>
+  <!-- Font Awesome -->
+  <link 
+    rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  />
+  <!-- your main CSS -->
+  <link rel="stylesheet" href="css/main.css" />
+  <style>
+    /* center & scale the project poster */
+    .project-section img {
+      display: block;
+      margin: 1.5rem auto;
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+    /* section headings */
+    .project-section h2 {
+      margin-top: 1.5rem;
+      font-size: 1.25rem;
+      color: #1a202c;
+    }
+    .project-section p,
+    .project-section ul {
+      margin-top: 0.5rem;
+      line-height: 1.6;
+      color: #2d3748;
+    }
+    .project-section ul {
+      padding-left: 1.25rem;
+    }
+    .project-section li {
+      margin-bottom: 0.25rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <ul class="nav">
+        <li>
+          <a href="index.html">
+            <i class="fas fa-home"></i><span>Home</span>
+          </a>
+        </li>
+        <li>
+          <a href="power_outage.html">
+            <i class="fas fa-bolt"></i><span>Power Outage Prediction</span>
+          </a>
+        </li>
+        <li>
+          <a href="internship_report.html" class="active">
+            <i class="fas fa-briefcase"></i><span>Internship Report</span>
+          </a>
+        </li>
+        <li>
+          <a href="mergers_acquisitions.html">
+            <i class="fas fa-handshake"></i><span>M&A Modeling</span>
+          </a>
+        </li>
+      </ul>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main">
+      <section class="project-section">
+
+        <!-- Project Poster -->
+        <img
+          src="assets/Runbuggy Final Poster.png"
+          alt="RunBuggy Repo-Site Scoring Project Poster"
+        />
+
+        <!-- Title & Overview -->
+        <h2>RunBuggy Repo-Site Scoring Project</h2>
+        <p>
+          This project tackled the challenge of repo-site transparency on the
+          RunBuggy car-shipping platform, where inconsistent site quality
+          undermines customer and lender confidence. Our goal was to transform
+          disparate internal order data and unstructured feedback into clear,
+          data-driven “good vs. bad” repo-site scores that both consumers and
+          RunBuggy teams can trust.
+        </p>
+
+        <!-- Data Integration & Preparation -->
+        <h2>Data Integration &amp; Preparation</h2>
+        <p>
+          We merged RunBuggy’s internal order records with public business
+          data (Google, Yelp) using Python and SQL, cleaning and standardizing
+          fields to create a unified dataset. Unstructured customer comments
+          were processed with LLMs and custom Python scripts to extract numeric
+          sentiment and reliability metrics.
+        </p>
+
+        <!-- Unsupervised Modeling -->
+        <h2>Unsupervised Modeling</h2>
+        <h3>K-Means Clustering (scikit-learn)</h3>
+        <ul>
+          <li>Grouped 500 repo sites into four discrete quality tiers based on total ratings, cancellation rates, and average Google score.</li>
+        </ul>
+        <h3>Principal Component Analysis (PCA)</h3>
+        <ul>
+          <li>Reduced high-dimensional feature space (Google/Yelp ratings & counts, message-response rate) to a single continuous “customer-satisfaction” score, capturing nuance within clusters.</li>
+        </ul>
+
+        <!-- Results & Impact -->
+        <h2>Results &amp; Impact</h2>
+        <p>
+          The clustering model yielded clear categorical tiers that align with
+          user expectations (e.g., “high-trust” vs. “risk” sites), while the PCA
+          score highlighted fine-grained differences across all locations.
+          These scores powered a prototype interactive map, enabling customers
+          to filter sites by quality and confidence level. Internally, RunBuggy
+          teams gained a robust scoring pipeline—complete with automated
+          text-to-numeric preprocessing—that will guide site vetting, improve
+          lender relations, and enhance user satisfaction.
+        </p>
+
+      </section>
+    </main>
+  </div>
+</body>
+</html>

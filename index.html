@@ -1,30 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
   <title>Yuxing Liu Portfolio</title>
-  <link rel="stylesheet" href="css/main.css" />
-  <!-- Font Awesome for icons -->
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
-    integrity="sha512-HHsOC8M+7rL3fEI6Wh+9KkqEUmnYQy+M4Z6E1rtYshoOhvlAqgT6K8cDw2qvV3pT+z8QGwvT7P6o6fZhC1x5mA=="
-    crossorigin="anonymous"
-    referrerpolicy="no-referrer"
+  <!-- Font Awesome first -->
+  <link 
+    rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
   />
+  <!-- Your main stylesheet -->
+  <link rel="stylesheet" href="css/main.css"/>
 </head>
 <body>
   <div class="container">
     <!-- SIDEBAR -->
     <aside class="sidebar">
       <ul class="nav">
-        <li><a href="#home"><i class="fa fa-home"></i></a></li>
-        <li><a href="#project1"><i class="fa fa-chart-bar"></i></a></li>
-        <li><a href="#project2"><i class="fa fa-star"></i></a></li>
+        <li>
+          <a href="index.html" class="active">
+            <i class="fas fa-home"></i>
+            <span>Home</span>
+          </a>
+        </li>
+        <li>
+          <a href="power_outage.html">
+            <i class="fas fa-bolt"></i>
+            <span>Power Outage Prediction</span>
+          </a>
+        </li>
+        <li>
+          <a href="internship_report.html">
+            <i class="fas fa-briefcase"></i>
+            <span>Internship Report</span>
+          </a>
+        </li>
+        <li>
+          <a href="mergers_acquisitions.html">
+            <i class="fas fa-handshake"></i>
+            <span>M&A Modeling</span>
+          </a>
+        </li>
       </ul>
     </aside>
-
+    
     <!-- MAIN CONTENT -->
     <main class="main">
       <!-- HOME SECTION -->
@@ -32,27 +51,40 @@
         <div class="top-row">
           <!-- PROFILE CARD -->
           <div class="profile-card">
-            <img src="assets/Visa photo copy.JPG" alt="Profile" class="profile-pic" />
-            <h2>About me</h2>
-            <p>
-              B.S. in Mathematics-Computer Science (Minor: Data Science) at UC San Diego,
-              expected June 2026. Research Assistant specializing in web scraping,
-              quantitative analysis, and machine learning.
-            </p>
-            <a href="assets/Yuxing Liu Resume .pdf" class="btn">
-              <i class="fa fa-file"></i> Download Resume
-            </a>
-            <ul class="tabs">
-              <li>Coding Languages</li>
-              <li>Data &amp; Cloud</li>
-              <li>Web &amp; DevOps</li>
-            </ul>
-            <div class="social">
-              <a href="https://www.linkedin.com/in/yuxing-liu-profile"><i class="fab fa-linkedin"></i></a>
-              <a href="https://github.com/yuxing26liu"><i class="fab fa-github"></i></a>
-              <a href="mailto:yuxingliu0826@gmail.com"><i class="fa fa-envelope"></i></a>
-            </div>
-          </div>
+  <img src="assets/Visa photo copy.JPG" alt="Profile" class="profile-pic" />
+  <h2>About me</h2>
+  <p>
+    B.S. in Mathematics-Computer Science (Minor: Data Science) at UC San Diego,
+    expected June 2026. Research Assistant specializing in web scraping,
+    quantitative analysis, and machine learning.
+  </p>
+  <a href="assets/Yuxing Liu Resume .pdf" class="btn">
+    <i class="fa fa-file"></i> Download Resume
+  </a>
+
+  <!-- ↓ new icons row ↓ -->
+  <div class="contact-icons">
+  <a href="mailto:yuxingliu0826@gmail.com">
+    <i class="fas fa-envelope"></i>
+  </a>
+  <a href="https://github.com/yuxing26liu" target="_blank" rel="noopener">
+    <i class="fab fa-github"></i>
+  </a>
+  <a href="https://linkedin.com/in/yuxing-liu26" target="_blank" rel="noopener">
+    <i class="fab fa-linkedin"></i>
+  </a>
+</div>
+
+<p class="contact-info">
+  San Diego, CA | 503-380-5765 | 
+  <a href="mailto:yuxingliu0826@gmail.com">yuxingliu0826@gmail.com</a> | 
+  <a href="https://linkedin.com/in/yuxing-liu26" target="_blank" rel="noopener">
+    linkedin.com/in/yuxing-liu26
+  </a>
+</p>
+
+</div>
+
 
           <!-- CHART GRID -->
           <div class="charts-grid">
@@ -63,8 +95,51 @@
               <img src="assets/projecttype.png" alt="Projects by Category" />
             </div>
             <div class="chart chart-full">
-              <img src="assets/skills.png" alt="Cumulative Skills by Year" />
-            </div>
+  <img src="assets/skills.png" alt="Cumulative Skills by Year" />
+
+  <!-- new: skill breakdown under the chart -->
+  <div class="chart-details">
+    <div class="detail-col">
+      <h4>Coding Languages</h4>
+      <ul>
+        <li>Python</li>
+        <li>Java</li>
+        <li>JavaScript</li>
+        <li>HTML/CSS</li>
+        <li>C</li>
+        <li>Bash</li>
+        <li>R</li>
+        <li>STATA</li>
+        <li>Arduino</li>
+      </ul>
+    </div>
+    <div class="detail-col">
+      <h4>Data &amp; Cloud</h4>
+      <ul>
+        <li>pandas</li>
+        <li>numpy</li>
+        <li>Tableau</li>
+        <li>Excel</li>
+        <li>AWS RDS/S3/Quicksight</li>
+        <li>scikit-learn</li>
+        <li>matplotlib</li>
+        <li>pyarrow</li>
+      </ul>
+    </div>
+    <div class="detail-col">
+      <h4>Web &amp; DevOps</h4>
+      <ul>
+        <li>React</li>
+        <li>MongoDB</li>
+        <li>Next.js</li>
+        <li>Streamlit</li>
+        <li>AWS Lambda</li>
+        <li>Docker</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
           </div>
         </div>
 

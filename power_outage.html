@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Power Outage Prediction</title>
+  <!-- Font Awesome -->
+  <link 
+    rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  />
+  <!-- Your main stylesheet -->
+  <link rel="stylesheet" href="css/main.css" />
+  <style>
+    /* Center & responsively size the plot image */
+    .project-section img {
+      display: block;
+      margin: 1.5rem auto;
+      max-width: 100%;
+      height: auto;
+    }
+    /* Optional smaller heading spacing */
+    .project-section h2 {
+      margin-top: 1.5rem;
+      font-size: 1.25rem;
+      color: #1a202c;
+    }
+    .project-section p {
+      margin-top: 0.5rem;
+      line-height: 1.6;
+      color: #2d3748;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <ul class="nav">
+        <li>
+          <a href="index.html">
+            <i class="fas fa-home"></i>
+            <span>Home</span>
+          </a>
+        </li>
+        <li>
+          <a href="power_outage.html" class="active">
+            <i class="fas fa-bolt"></i>
+            <span>Power Outage Prediction</span>
+          </a>
+        </li>
+        <li>
+          <a href="internship_report.html">
+            <i class="fas fa-briefcase"></i>
+            <span>Internship Report</span>
+          </a>
+        </li>
+        <li>
+          <a href="mergers_acquisitions.html">
+            <i class="fas fa-handshake"></i>
+            <span>M&A Modeling</span>
+          </a>
+        </li>
+      </ul>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main">
+      <section class="project-section">
+        <!-- Centered Interactive Plot -->
+        <img
+          src="assets/Outage Prediction.png"
+          alt="Actual vs. Predicted Outage Duration"
+        />
+        <p>
+          Visit the project website for more details: 
+          <a href="https://yuxing26liu.github.io/Power-Outage-Predictor/" target="_blank" rel="noopener">https://yuxing26liu.github.io/Power-Outage-Predictor/</a>
+        </p>
+        <!-- Project Context -->
+        <h2>Project Context</h2>
+        <p>
+          This project analyzes a Purdue University dataset of 1,534 major U.S. 
+          power outages (2000–2016) to predict outage duration using only 
+          information available at the moment an outage begins (e.g., cause, region,
+          state, urban density, day-of-week). Accurately forecasting duration helps 
+          utilities allocate repair crews, pre-stage resources, and set restoration expectations.
+        </p>
+
+        <!-- EDA -->
+        <h2>Exploratory Data Analysis (EDA)</h2>
+        <p>
+          Using pandas and NumPy, we cleaned the raw data—dropped metadata rows, 
+          removed 58 events missing <code>OUTAGE.DURATION</code>, and discarded 
+          irrelevant land-use and macroeconomic columns. We combined separate date 
+          and time fields into <code>OUTAGE.START</code> and <code>OUTAGE.RESTORATION</code> 
+          timestamps, from which we engineered <code>dow</code> (day of week) and an 
+          <code>is_weekend</code> flag, and retained key severity metrics 
+          (<code>CUSTOMERS.AFFECTED</code>, <code>DEMAND.LOSS.MW</code>) along with 
+          state urban density (<code>POPDEN_URBAN</code>). We visualized outage frequencies 
+          by cause and state (bar charts, U.S. choropleth) and examined duration distributions 
+          across climate regions and seasons (boxplots) and urbanization vs. customers 
+          affected (scatterplot) using Matplotlib and Plotly. Hypothesis tests in SciPy 
+          (permutation-based missingness test, Mann–Whitney U) confirmed that missingness 
+          in <code>DEMAND.LOSS.MW</code> depended on cause (p &lt; 0.001) and that seasonality 
+          did not significantly affect duration.
+        </p>
+
+        <!-- Data Modeling -->
+        <h2>Data Modeling</h2>
+        <p>
+          In scikit-learn, we first built a baseline <code>Pipeline</code>: a 
+          <code>ColumnTransformer</code> with <code>OneHotEncoder(handle_unknown="ignore")</code> 
+          on <code>CAUSE.CATEGORY</code> and <code>CLIMATE.REGION</code>, feeding a 
+          <code>RandomForestRegressor(n_estimators=100)</code>. This yielded Test RMSE 
+          ≈ 7 398 min (≈ 5.1 days) and R² = 0.108, showing limited predictive power from 
+          cause and region alone. For the final model, we added predictors 
+          (<code>U.S._STATE</code>, <code>POPDEN_URBAN</code>) and engineered features 
+          (<code>dow</code>, <code>is_weekend</code>), standard-scaled the numeric feature, 
+          and replaced the forest with a <code>HistGradientBoostingRegressor</code>. We performed a 
+          <code>GridSearchCV</code> (5-fold, optimizing RMSE) over <code>learning_rate</code> 
+          (0.01, 0.05, 0.1), <code>max_iter</code> (200, 400, 600), and <code>max_leaf_nodes</code> 
+          (15, 31, 63), selecting <code>learning_rate=0.01</code>, <code>max_iter=200</code>, 
+          <code>max_leaf_nodes=15</code>.
+        </p>
+
+        <!-- Results & Fairness Analysis -->
+        <h2>Results &amp; Fairness Analysis</h2>
+        <p>
+          The tuned Gradient-Boosting model reduced test RMSE to 1 329.56 minutes 
+          (≈ 22 hours) with R² = 0.3353, a fourfold improvement in error. Finally, 
+          we conducted a custom permutation test to compare RMSE for outages in the 
+          “South” vs. “East North Central” regions; with p = 0.459, we found no evidence 
+          of disparate predictive performance across these climate regions.
+        </p>
+
+        
+      </section>
+    </main>
+  </div>
+</body>
+</html>

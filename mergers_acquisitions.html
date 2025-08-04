@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Business Acquisition Evaluation</title>
+  <!-- Font Awesome -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  />
+  <!-- your main CSS -->
+  <link rel="stylesheet" href="css/main.css" />
+  <style>
+    /* center & scale the image or embed */
+    .project-section img,
+    .project-section iframe {
+      display: block;
+      margin: 1.5rem auto;
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+    /* tighten text */
+    .project-section h2 {
+      margin-top: 1.5rem;
+      font-size: 1.25rem;
+      color: #1a202c;
+    }
+    .project-section p,
+    .project-section ul {
+      margin-top: 0.5rem;
+      line-height: 1.6;
+      color: #2d3748;
+    }
+    .project-section ul {
+      padding-left: 1.25rem;
+    }
+    .project-section li {
+      margin-bottom: 0.25rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <ul class="nav">
+        <li>
+          <a href="index.html">
+            <i class="fas fa-home"></i><span>Home</span>
+          </a>
+        </li>
+        <li>
+          <a href="power_outage.html">
+            <i class="fas fa-bolt"></i><span>Power Outage Prediction</span>
+          </a>
+        </li>
+        <li>
+          <a href="internship_report.html">
+            <i class="fas fa-briefcase"></i><span>Internship Report</span>
+          </a>
+        </li>
+        <li>
+          <a href="mergers_acquisitions.html" class="active">
+            <i class="fas fa-handshake"></i><span>M&A Modeling</span>
+          </a>
+        </li>
+      </ul>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main">
+      <section class="project-section">
+
+        <!-- Diagram at top -->
+        <img
+          src="assets/M_and_A.png" 
+          alt="End-to-end M&A evaluation pipeline"
+        />
+        <!-- OR, if you want to embed the PDF directly:
+        <iframe 
+          src="assets/Business Acquisition Prediction.pdf" 
+          width="100%" 
+          height="600px"
+        ></iframe>
+        -->
+
+        <!-- Title -->
+        <h2>Business Acquisition Evaluation</h2>
+        <p>
+          In this project, we built an end-to-end M&A evaluation pipeline that
+          (1) predicts the likelihood of a target’s acquisition using machine
+          learning, (2) estimates its intrinsic value via a multi-stage DCF model,
+          and (3) quantifies post-merger synergies to produce a “with-synergies”
+          equity value.
+        </p>
+
+        <!-- Context & Motivation -->
+        <h2>Context &amp; Motivation</h2>
+        <p>
+          Mergers and acquisitions are critical for corporate growth, but target
+          identification and valuation remain time-consuming and error-prone
+          when done manually. By automating deal screening with AI and rigorous
+          financial modeling, we enable faster, more data-driven decisions and
+          help acquirers prioritize high-potential targets.
+        </p>
+
+        <!-- Technical Skills & Methods -->
+        <h2>Technical Skills &amp; Methods</h2>
+
+        <h3>Data Engineering &amp; Feature Engineering (Python, SQL)</h3>
+        <ul>
+          <li>Unified Crunchbase records into a SQL schema.</li>
+          <li>Engineered predictors such as total funding, number of funding rounds, and founders’ educational credentials.</li>
+        </ul>
+
+        <h3>Acquisition-Likelihood Modeling (scikit-learn)</h3>
+        <ul>
+          <li>Imputed missing values and one-hot encoded categorical fields with DataFrameMapper & custom imputers.</li>
+          <li>Trained a GradientBoostingClassifier to output a probability score of an M&A event.</li>
+          <li>Identified top drivers (e.g., company age, founder degrees, funding history) via feature‐importance analysis.</li>
+        </ul>
+
+        <h3>Valuation Modeling (Excel &amp; Python)</h3>
+        <ul>
+          <li>Built a multi-phase Discounted Cash Flow model: revenue growth projection, operating-margin evolution, WACC calculation, and terminal value.</li>
+          <li>Produced a detailed cash-flow schedule, DCF value, and implied per-share equity valuation.</li>
+        </ul>
+
+        <h3>Synergy Valuation</h3>
+        <ul>
+          <li>Modeled incremental cash flows from merger synergies and added them to the baseline DCF to derive a “with-synergies” valuation.</li>
+        </ul>
+
+        <!-- Results & Impact -->
+        <h2>Results &amp; Impact</h2>
+        <p>
+          Achieved a robust acquisition-likelihood classifier with clear,
+          interpretable feature rankings (age ≈ 0.34 importance; advanced
+          degrees ≈ 0.20). Delivered a scalable preprocessing pipeline that
+          handles unseen categories and missing data, ensuring consistent
+          scoring across new company records. Produced both standalone and
+          synergy-adjusted valuations to guide strategic deal pricing, reducing
+          manual effort and improving decision confidence.
+        </p>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

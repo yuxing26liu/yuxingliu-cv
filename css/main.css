@@ -1,78 +1,225 @@
 /* -- Reset & base -- */
-* { margin:0; padding:0; box-sizing:border-box; }
-body { font-family: 'Segoe UI', sans-serif; background:#f5f5f5; }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: #f5f5f5;
+}
 
 /* -- Layout -- */
-.container { display:flex; min-height:100vh; }
-.sidebar {
-  width:80px; background:#2d3748; display:flex; align-items:center; 
-  justify-content:center;
+.container {
+  display: flex;
+  min-height: 100vh;
 }
-.sidebar .nav { list-style:none; text-align:center; }
-.sidebar .nav li { margin:1rem 0; }
-.sidebar .nav a { color:#ffffff; font-size:1.5rem; display:block; }
 
-/* -- Main content -- */
-.main { flex:1; padding:1.5rem; overflow-y:auto; }
+/* ─── SIDEBAR ─────────────────────────────────────────────────── */
+.sidebar {
+  width: 200px;
+  padding: 2rem 1rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  background: #2d3748;
+  overflow-y: auto;
+}
+.sidebar .nav {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.sidebar .nav li {
+  margin-bottom: 1rem;
+}
+.sidebar .nav li a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  color: #ffffff;
+  font-size: 0.9rem;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: background 0.2s;
+}
+.sidebar .nav li a i {
+  font-size: 1.2rem;
+}
+.sidebar .nav li a:hover,
+.sidebar .nav li a.active {
+  background: #394254;
+}
 
-/* -- Profile + charts row -- */
-.top-row { display:flex; gap:1.5rem; }
+/* ─── MAIN ────────────────────────────────────────────────────── */
+.main {
+  margin-left: 200px;    /* push content over by sidebar width */
+  padding: 1rem;
+  overflow-y: auto;
+}
+
+/* ─── TOP ROW: PROFILE + CHARTS ───────────────────────────────── */
+.top-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-top: 0;
+}
 
 /* Profile card */
 .profile-card {
-  background:#e2e8f0; border-radius:12px; padding:1.5rem; width:40%;
-  display:flex; flex-direction:column; gap:1rem;
+  background: #e2e8f0;
+  border-radius: 12px;
+  padding: 1.5rem;
+  flex: 1 1 300px;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 .profile-card .profile-pic {
-  width:100%; height:auto; border-radius:8px;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
 }
-.profile-card h2 { font-size:1.5rem; margin-top:0.5rem; }
-.profile-card p { font-size:0.9rem; color:#333; }
-.profile-card .btn {
-  display:inline-block; padding:0.5rem 1rem; background:#fff; 
-  border-radius:6px; text-decoration:none; color:#333; font-weight:500;
-  box-shadow:0 2px 4px rgba(0,0,0,0.1);
+.profile-card .contact-icons {
+  margin-top: 1rem;
+  display: flex;
+  gap: 1rem;
 }
-.profile-card .tabs {
-  display:flex; list-style:none; gap:1rem; font-size:0.9rem; margin-top:0.5rem;
+.profile-card .contact-icons a {
+  color: #1a202c;
+  font-size: 1.5rem;
+  transition: color 0.2s;
 }
-.profile-card .social {
-  display:flex; gap:1rem; margin-top:1rem;
+.profile-card .contact-icons a:hover {
+  color: #2b6cb0;
 }
-.profile-card .social a { color:#2d3748; font-size:1.2rem; }
+.profile-card .contact-info {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: #1a202c;
+}
+.profile-card .contact-info a {
+  color: inherit;
+  text-decoration: underline;
+}
 
 /* Charts grid */
 .charts-grid {
-  display:grid; width:60%;
-  grid-template-columns:1fr 1fr; grid-template-rows:auto auto;
-  gap:1rem;
+  flex: 2 1 400px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  column-gap: 1rem;
+  row-gap: 0.5rem;
+  justify-content: center;
+  justify-items: center;
+}
+.charts-grid .chart {
+  background-color: #e3f2fd;
+  padding: 0.75rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  align-self: start;
+  width: 100%;
+  max-width: 600px;
+  justify-self: center;
 }
 .charts-grid .chart img {
-  width:100%; height:auto; border-radius:8px;
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
 }
 .charts-grid .chart-full {
-  grid-column:1/3;
+  grid-column: 1 / -1;
+  max-width: none;
+  justify-self: stretch;
+  padding: 0.75rem 0.75rem 0.25rem;
 }
 
-/* Bottom info cards */
+/* skill‐list under line chart */
+.chart-full .chart-details {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+.chart-full .detail-col h4 {
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+}
+.chart-full .detail-col ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.chart-full .detail-col li {
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+/* Info row */
 .info-row {
-  display:flex; gap:1rem; margin-top:1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1rem;
 }
 .info-card {
-  flex:1; padding:1rem; border-radius:12px; color:#1a202c;
-  display:flex; flex-direction:column; gap:0.5rem;
-  position:relative; overflow:hidden;
+  flex: 1 1 240px;
+  padding: 1rem;
+  border-radius: 12px;
+  color: #1a202c;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  position: relative;
+  overflow: hidden;
 }
 .info-card i {
-  position:absolute; top:1rem; right:1rem; font-size:1.2rem; color:#1a202c;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 1.2rem;
+  color: #1a202c;
 }
-.info-card h3 { margin-top:1.5rem; font-size:1.3rem; }
-.info-card p { font-size:0.9rem; }
+.info-card.hobby      { background: #d6bcfa; }
+.info-card.experience { background: #fbb6ce; }
+.info-card.volunteer  { background: #fed7aa; }
 
-/* Individual card colors */
-.info-card.hobby        { background:#d6bcfa; }
-.info-card.experience   { background:#fbb6ce; }
-.info-card.volunteer    { background:#fed7aa; }
+/* Utility button */
+.btn {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background: #fff;
+  border-radius: 6px;
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
 
-/* Link sections */
-.project-section { margin-top:3rem; }
+/* ─── Responsive ──────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .sidebar {
+    position: relative;
+    width: 100%;
+    height: auto;
+    padding: 1rem;
+  }
+  .main {
+    margin-left: 0;
+  }
+  .top-row, .info-row {
+    flex-direction: column;
+  }
+  .charts-grid {
+    grid-template-columns: 1fr;
+  }
+}
